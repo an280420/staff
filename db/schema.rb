@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_110809) do
+ActiveRecord::Schema.define(version: 2021_07_19_134024) do
+
+  create_table "divisions", force: :cascade do |t|
+    t.string "name"
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_divisions_on_parent_id"
+  end
+
+  create_table "employment_terms", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "division_id", null: false
+    t.integer "position_id", null: false
+    t.date "begin_date", null: false
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["division_id"], name: "index_employment_terms_on_division_id"
+    t.index ["position_id"], name: "index_employment_terms_on_position_id"
+    t.index ["user_id"], name: "index_employment_terms_on_user_id"
+  end
 
   create_table "position_histories", force: :cascade do |t|
     t.string "name", null: false
@@ -35,5 +56,9 @@ ActiveRecord::Schema.define(version: 2021_07_19_110809) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "divisions", "divisions", column: "parent_id"
+  add_foreign_key "employment_terms", "divisions"
+  add_foreign_key "employment_terms", "positions"
+  add_foreign_key "employment_terms", "users"
   add_foreign_key "position_histories", "positions"
 end

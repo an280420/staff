@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'employment_terms/create'
   get 'divisions/index'
   get 'divisions/show'
   resources :position_histories
