@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'divisions/index'
+  get 'divisions/show'
   resources :position_histories
   resources :positions
   resources :users
