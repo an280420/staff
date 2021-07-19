@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_105439) do
+ActiveRecord::Schema.define(version: 2021_07_19_110809) do
+
+  create_table "position_histories", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "position_id", null: false
+    t.date "begin_date", null: false
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["position_id"], name: "index_position_histories_on_position_id"
+  end
 
   create_table "positions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -25,4 +35,5 @@ ActiveRecord::Schema.define(version: 2021_07_19_105439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "position_histories", "positions"
 end
