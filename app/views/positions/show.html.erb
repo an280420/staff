@@ -1,4 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Position name:</strong>
+  <%= @position.position_history.name %>
+</p>
+
+<p>
+  <strong>Begin date:</strong>
+  <%= @position.position_history.begin_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @position.position_history.end_date %>
+</p>
+
 <%= link_to 'Edit', edit_position_path(@position) %> |
 <%= link_to 'Back', positions_path %>

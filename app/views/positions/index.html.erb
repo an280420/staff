@@ -5,6 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th>Должность</th>
+      <th>Дата введения должности</th>
+      <th>Дата ликвидации должности</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +15,9 @@
   <tbody>
     <% @positions.each do |position| %>
       <tr>
+        <td><%= position.position_history&.name %></td>
+        <td><%= position.position_history&.begin_date %></td>
+        <td><%= position.position_history&.end_date %></td>
         <td><%= link_to 'Show', position %></td>
         <td><%= link_to 'Edit', edit_position_path(position) %></td>
         <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>

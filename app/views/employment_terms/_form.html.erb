@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :division_id %>
-    <%= form.text_field :division_id %>
+    <%= form.collection_select :division_id, Division.order(:name), :id, :name, {:include_blank => true} %>
   </div>
 
   <div class="field">
     <%= form.label :position_id %>
-    <%= form.text_field :position_id %>
+    <%= form.collection_select :position_id, PositionHistory.order(:name), :id, :name, {:include_blank => true} %>
   </div>
 
   <div class="field">
