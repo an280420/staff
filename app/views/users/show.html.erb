@@ -15,5 +15,16 @@
   <%= @user.s_name %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<h2>EmmploymentTerms</h2>
+<% for employment_term in @user.employment_terms %>
+    <ul>
+      <li><%= employment_term.division.name %></li>
+      <li><%= employment_term.position.position_history.name %></li>
+      <li><%= employment_term.begin_date %></li>
+      <li><%= employment_term.end_date %></li>
+  </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Add EmploymentTerm', user_employment_terms_path(@user) %>
 <%= link_to 'Back', users_path %>

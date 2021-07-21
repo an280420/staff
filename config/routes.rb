@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'divisions/show'
   resources :position_histories
   resources :positions
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users do
+    resources :employment_terms
+  end
+
+  root 'divisions#index'
 end

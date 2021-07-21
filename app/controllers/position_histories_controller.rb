@@ -17,6 +17,10 @@ class PositionHistoriesController < ApplicationController
 
   private
 
+  def get_position
+    @user = User.find(params[:user_id])
+  end
+
   def position_history_params
     params.require(:position_history).permit(:name, :position_id, :begin_date, :end_date)
   end

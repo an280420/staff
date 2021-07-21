@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Employment Terms</h1>
+<h2><%= "сотрудник #{@user.l_name} #{@user.f_name} #{@user.s_name}" %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Подразделение</th>
+      <th>Должность</th>
+      <th>Дата назначения</th>
+      <th>Дата окончания</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employment_terms.each do |employment_term| %>
+      <tr>
+        <td><%= employment_term.division.name %></td>
+        <td><%= employment_term.position.position_history.name %></td>
+        <td><%= employment_term.begin_date %></td>
+        <td><%= employment_term.end_date %></td>
+        <td><%= link_to 'Show User', [@user] %></td>
+        <td><%= link_to 'Edit Employment', edit_user_employment_term_path(@user, employment_term) %></td>
+        <td><%= link_to 'Destroy Employment', [@user, employment_term], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employment Term', new_user_employment_term_path(@user) %>
