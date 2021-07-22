@@ -60,6 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ancestry (4.1.0)
+      activerecord (>= 5.2.6)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
@@ -159,6 +161,16 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     semantic_range (3.0.0)
     spring (2.1.1)
     sprockets (4.0.2)
@@ -170,6 +182,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
     thor (1.1.0)
+    tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -194,6 +207,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  ancestry
   bootsnap (>= 1.4.4)
   factory_bot_rails
   faker
@@ -203,6 +217,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
   rspec-rails
+  sass-rails (>= 6)
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
