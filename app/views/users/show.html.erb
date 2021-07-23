@@ -1,28 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>L name:</strong>
-  <%= @user.l_name %>
-</p>
+<h2><%= "Сотрудник: #{@user.l_name} #{@user.f_name} #{@user.s_name}" %></h2>
 
-<p>
-  <strong>F name:</strong>
-  <%= @user.f_name %>
-</p>
+<h2><%= @begin_date %></h2>
+<h2><%= @end_date %></h2>
 
-<p>
-  <strong>S name:</strong>
-  <%= @user.s_name %>
-</p>
+<h2><%= @title %></h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Подразделение</th>
+        <th>Должность</th>
+        <th>Дата приема</th>
+        <th>Дата перевода / увольнения</th>
+      </tr>
+    </thead>
 
-<h2>EmmploymentTerms</h2>
-<% for employment_term in @user.employment_terms %>
-    <ul>
-      <li><%= employment_term.division.name %></li>
-      <li><%= employment_term.position.position_history.name %></li>
-      <li><%= employment_term.begin_date %></li>
-      <li><%= employment_term.end_date %></li>
-  </ul>
+    <tbody>
+      <% unless @user.employment_terms.empty? %>
+        <% @employment_terms.each do |employment_term| %>
+          <tr>
+            <td><%= employment_term.division.name %></td>
+            <td><%= employment_term.position.position_history.name %></td>
+            <td><%= employment_term.begin_date %></td>
+            <td><%= employment_term.end_date %></td>
+          </tr>
+        <% end %>
+      <% else%>
+         <tr>
+            <td colspan="4">Cотрудник не имеет записей о назначении на должность</td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</br>
+</br>
+<p>Посмотреть позиции за период. Выберите начальную и конечную дату периода</p>
+
+<%= form_with url: "/users/#{@user.id}", method: :get do |form| %>
+  <div class="mb-3">
+    <%= form.date_field :begin_date, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.date_field :end_date, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "Применить фильтр", class: "btn btn-primary" %>
+    <%= link_to 'Текущая позиция', user_path, class: "btn btn-primary"  %>
+  </div>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %>

@@ -1,5 +1,22 @@
-<h1>Divisions#index</h1>
-<p>Find me in app/views/divisions/index.html.erb</p>
+<h1>Cтруктура подразделений предприятия</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Подразделение</th>
+        <th>Количество сотрудников действующих</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @divisions.each do |division| %>
+        <tr>
+          <td><%= division.name %></td>
+          <td><%= division.employment_terms.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 <%= link_to 'Все доступные должности', positions_path %> |
 <%= link_to 'Все сотрудники', users_path %>
