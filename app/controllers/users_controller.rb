@@ -10,12 +10,9 @@ class UsersController < ApplicationController
   def show
     if params[:begin_date] && params[:end_date]
       date_range = params[:begin_date]..params[:end_date]
-      @employment_terms = @user.employment_terms.where(begin_date: date_range)
-      
-      # @employment_terms = @user.employment_terms.where("begin_date = ? AND end_date = ?", date_range, date_range)
-      
+      @employment_terms = @user.employment_terms.where(begin_date: date_range).or(@user.employment_terms.where(end_date: date_range))
+      # @employment_terms = @user.employment_terms.where(["begin_date = ? OR end_date = ?", date_range, date_range])
       # binding.pry
-      
       @title = 'Занимаемые должности на запрашиваемый период'
     else
       @employment_terms = [@user.employment_terms.find_by(end_date: nil)]
