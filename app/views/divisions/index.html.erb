@@ -1,6 +1,8 @@
 <h1>Cтруктура подразделений предприятия</h1>
 
-  <table class="table table-striped">
+<%= @divisions_for_render %>
+
+  <%# <table class="table table-striped">
     <thead>
       <tr>
         <th>Подразделение</th>
@@ -11,12 +13,12 @@
     <tbody>
       <% @divisions.each do |division| %>
         <tr>
-          <td><%= division.name %></td>
-          <td><%= division.employment_terms.count %></td>
+          <td><%#= division.name %></td>
+          <td><%#= division.employment_terms.count %></td>
         </tr>
-      <% end %>
+      <%# end %>
     </tbody>
-  </table>
+  </table> %>
 
 <%= link_to 'Все доступные должности', positions_path %> |
 <%= link_to 'Все сотрудники', users_path %>
